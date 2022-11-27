@@ -1,6 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:demo/src/blocs/home/home_cubit.dart';
-import 'package:demo/src/screens/home/home.dart';
+import 'package:demo/src/screens/login/login.dart';
 import 'package:demo/src/screens/no_network_alert/no_network_alert.dart';
 import 'package:demo/src/shares/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +32,14 @@ class DemoAppState extends WidgetState<DemoApp> with WidgetsBindingObserver {
         ChangeNotifierProvider.value(value: topOverlay),
       ],
       child: BlocConsumer<AppCubit, AppState>(
-        listener: handleAppState,
-        builder: (_, state) => const Home(),
-      ),
+          listener: handleAppState,
+          builder: (_, state) => MaterialApp(
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: const Login(),
+              )),
     );
   }
 
